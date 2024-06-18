@@ -134,6 +134,7 @@
     <ClCompile Include="src\Board.cpp" />
     <ClCompile Include="src\Console.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Player_AI.cpp" />
     <ClCompile Include="src\Player_Human.cpp" />
   </ItemGroup>
