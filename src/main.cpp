@@ -7,6 +7,8 @@
 #include <Windows.h>
 #endif
 
+#include "Console.hpp"
+
 int main(int argc, char* argv[])
 {
 #ifdef rlWINDOWS
@@ -20,6 +22,9 @@ int main(int argc, char* argv[])
 	}
 #endif
 
+	using col = Console::Color;
+
+	Console::SetColors(col::BrightWhite, col::BrightBlue);
 
 	std::printf(
 		"==================================================\n"
@@ -27,6 +32,9 @@ int main(int argc, char* argv[])
 		"==================================================\n"
 		"\n"
 	);
+
+	// reset the console colors
+	Console::ResetColors();
 
 	return 0;
 }
