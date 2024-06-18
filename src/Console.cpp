@@ -1,0 +1,80 @@
+#include "Console.hpp"
+
+#include <cstdio>
+
+
+
+namespace
+{
+
+	constexpr char szFG_COLORS[][3] =
+	{
+		"30",
+		"31",
+		"32",
+		"33",
+		"34",
+		"35",
+		"36",
+		"37",
+		"90",
+		"91",
+		"92",
+		"93",
+		"94",
+		"95",
+		"96",
+		"97"
+	};
+
+	constexpr char szBG_COLORS[][4] =
+	{
+		"40",
+		"41",
+		"42",
+		"43",
+		"44",
+		"45",
+		"46",
+		"47",
+		"100",
+		"101",
+		"102",
+		"103",
+		"104",
+		"105",
+		"106",
+		"107"
+	};
+
+}
+
+
+
+namespace Console
+{
+
+	void SetForegroundColor(Color cl)
+	{
+		std::printf("\033[%sm", szFG_COLORS[(size_t)cl]);
+	}
+
+	void SetBackgroundColor(Color cl)
+	{
+		std::printf("\033[%sm", szBG_COLORS[(size_t)cl]);
+	}
+
+	void SetColors(Color clForeground, Color clBackground)
+	{
+		std::printf("\033[%s;%sm",
+			szFG_COLORS[(size_t)clForeground],
+			szBG_COLORS[(size_t)clBackground]
+		);
+	}
+
+	void ResetColors()
+	{
+		SetColors(Color::White, Color::Black);
+	}
+
+}
