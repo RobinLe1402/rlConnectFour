@@ -22,6 +22,8 @@ namespace rlConnectFour
 		bool hasEnded() const;
 		void nextMove();
 
+		const Board &getBoard() const { return m_oBoard; }
+
 
 	private: // variables
 

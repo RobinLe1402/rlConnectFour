@@ -8,6 +8,7 @@
 #endif
 
 #include "Console.hpp"
+#include "GameMaster.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -25,13 +26,16 @@ int main(int argc, char* argv[])
 	using col = Console::Color;
 
 	Console::SetColors(col::BrightWhite, col::BrightBlue);
-
 	std::printf(
 		"==================================================\n"
 		"= ROBIN LE'S  CONNECT FOUR  FOR THE COMMAND LINE =\n"
 		"==================================================\n"
 		"\n"
 	);
+	Console::ResetColors();
+
+	rlConnectFour::GameMaster oGameMaster(1, true);
+	oGameMaster.run();
 
 	// reset the console colors
 	Console::ResetColors();

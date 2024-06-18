@@ -13,7 +13,7 @@ namespace rlConnectFour
 			stream << " |";
 			for (int iX = 0; iX < BoardWidth; ++iX)
 			{
-				switch (board.getToken(board.getIndex(iX, BoardHeight - 1 - iY)))
+				switch (board.getToken(board.getIndex(iX, iY)))
 				{
 				case Token::None:
 					stream << "  ";
@@ -30,8 +30,9 @@ namespace rlConnectFour
 					break;
 				}
 				Console::ResetColors();
-				stream << "|\n";
+				stream << '|';
 			}
+			stream << '\n';
 		}
 
 		stream << " +--+--+--+--+--+--+--+\n";
