@@ -134,6 +134,7 @@
     <ClCompile Include="src\Board.cpp" />
     <ClCompile Include="src\Console.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Graphics.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Player_AI.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="src\Board.hpp" />
     <ClInclude Include="src\Console.hpp" />
     <ClInclude Include="src\Game.hpp" />
+    <ClInclude Include="src\Graphics.hpp" />
     <ClInclude Include="src\Player.hpp" />
     <ClInclude Include="src\Player_AI.hpp" />
     <ClInclude Include="src\Player_Human.hpp" />
