@@ -30,6 +30,7 @@ namespace rlConnectFour
 	{
 	public: // methods
 
+		bool isFinalState() const;
 		bool hasRoom(unsigned iColumn) const;
 
 		Token getToken(unsigned idx) const

@@ -5,6 +5,20 @@
 namespace rlConnectFour
 {
 
+	bool Board::isFinalState() const
+	{
+		return m_eWinner != Token::None ||
+		(
+			m_iTokenCount[0] == BoardHeight &&
+			m_iTokenCount[1] == BoardHeight &&
+			m_iTokenCount[2] == BoardHeight &&
+			m_iTokenCount[3] == BoardHeight &&
+			m_iTokenCount[4] == BoardHeight &&
+			m_iTokenCount[5] == BoardHeight &&
+			m_iTokenCount[6] == BoardHeight
+		);
+	}
+
 	bool Board::hasRoom(unsigned iColumn) const
 	{
 		assert(iColumn < BoardWidth);

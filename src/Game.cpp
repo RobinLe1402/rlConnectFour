@@ -32,7 +32,7 @@ namespace rlConnectFour
 
 	bool Game::hasEnded() const
 	{
-		return m_oBoard.getWinner() != Token::None;
+		return m_oBoard.isFinalState();
 	}
 
 	void Game::nextMove()
