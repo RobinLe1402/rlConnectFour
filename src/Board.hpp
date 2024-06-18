@@ -15,8 +15,8 @@ namespace rlConnectFour
 	enum class Token : unsigned char
 	{
 		None,
-		Player,
-		AI
+		Player1,
+		Player2
 	};
 
 
