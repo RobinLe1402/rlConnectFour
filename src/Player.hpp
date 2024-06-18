@@ -22,13 +22,14 @@ namespace rlConnectFour
 
 	public: // methods
 
-		Player(const Board &board, unsigned playerNo);
+		Player(const Board &board, Token player);
 		virtual ~Player() = default;
 
 
 	protected: // variables
 
 		const Board &m_oBoard;
+		const Token m_ePlayer;
 		const unsigned m_iPlayerNo;
 
 	};
