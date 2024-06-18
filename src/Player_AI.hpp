@@ -14,6 +14,9 @@ namespace rlConnectFour
 	{
 	public: // methods
 
+		using Player::Player;
+		~AIPlayer() = default;
+
 		unsigned nextMove() override;
 
 	};
