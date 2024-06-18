@@ -5,9 +5,12 @@ namespace rlConnectFour
 
 	unsigned AIPlayer::nextMove()
 	{
-		// TODO
-
-		return 0;
+		// TODO: proper AI
+		for (unsigned i = 0; i < BoardWidth; ++i)
+		{
+			if (m_oBoard.hasRoom(i))
+				return i;
+		}
 	}
 
 }
