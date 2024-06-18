@@ -30,6 +30,8 @@ namespace rlConnectFour
 	{
 	public: // methods
 
+		bool hasRoom(unsigned iColumn) const;
+
 		Token getToken(unsigned idx) const
 		{
 			assert(idx < BoardSize);

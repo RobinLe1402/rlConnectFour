@@ -5,6 +5,13 @@
 namespace rlConnectFour
 {
 
+	bool Board::hasRoom(unsigned iColumn) const
+	{
+		assert(iColumn < BoardWidth);
+
+		return m_iTokenCount[iColumn] < BoardHeight;
+	}
+
 	unsigned Board::getIndex(unsigned iColumn, unsigned iRowFromBottom) const
 	{
 		assert(iColumn        < BoardWidth);
