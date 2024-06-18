@@ -21,6 +21,7 @@ namespace rlConnectFour
 		{
 			std::cout << board;
 			m_oGame.nextMove();
+			std::cout << '\n';
 		}
 
 		std::cout << board;
