@@ -14,13 +14,15 @@ namespace rlConnectFour
 		{
 		public: // methods
 
-			GameTree(const Board &oCurrentBoard, Token eSelf) :
+			GameTree(const Board &oCurrentBoard, Token eSelf, unsigned iMaxDepth) :
 				m_oCurrentBoard(oCurrentBoard),
 				m_eSelf(eSelf),
-				m_eOpponent((eSelf == Token::Player1) ? Token::Player2 : Token::Player1)
+				m_eOpponent((eSelf == Token::Player1) ? Token::Player2 : Token::Player1),
+				m_iMaxDepth(iMaxDepth)
 			{
 				assert(eSelf == Token::Player1 || eSelf == Token::Player2);
 				assert(!oCurrentBoard.isFinalState());
+				assert(iMaxDepth > 0);
 			}
 
 			unsigned getBestColumn()
@@ -34,7 +36,7 @@ namespace rlConnectFour
 						continue; // no room in this column
 
 					unsigned iEndCount = 0;
-					const auto iWinCount = getWinCount(m_oCurrentBoard, iColumn, iEndCount);
+					const auto iWinCount = getWinCount(m_oCurrentBoard, iColumn, iEndCount, 1);
 
 					const auto fCurrent = (float)iWinCount / iEndCount;
 					if (fCurrent > fCurrentBest)
@@ -50,7 +52,12 @@ namespace rlConnectFour
 
 		private: // methods
 
-			unsigned getWinCount(const Board &board, unsigned iFirstPick, unsigned &iEndCount)
+			unsigned getWinCount(
+				const Board &board,
+				unsigned iFirstPick,
+				unsigned &iEndCount,
+				unsigned iCurrentDepth
+			)
 			{
 				iEndCount = 0;
 
@@ -62,9 +69,15 @@ namespace rlConnectFour
 					return oBoardCopy.getWinner() == m_eSelf;
 				}
 
+				if (iCurrentDepth == m_iMaxDepth)
+					return 0;
+
 				unsigned iWinCount = 0;
 				for (unsigned iColumnOpponent = 0; iColumnOpponent < BoardWidth; ++iColumnOpponent)
 				{
+					if (!oBoardCopy.hasRoom(iColumnOpponent))
+						continue;
+
 					Board oBoardCopy2 = oBoardCopy;
 					if (oBoardCopy2.isFinalState())
 					{
@@ -74,13 +87,18 @@ namespace rlConnectFour
 
 					for (unsigned iColumnSelf = 0; iColumnSelf < BoardWidth; ++iColumnSelf)
 					{
+						if (!oBoardCopy2.hasRoom(iColumnSelf))
+							continue;
+
 						unsigned iLocalEndCount = 0;
-						iWinCount += getWinCount(oBoardCopy2, iColumnSelf, iLocalEndCount);
+						iWinCount += getWinCount(oBoardCopy2, iColumnSelf, iLocalEndCount,
+							iCurrentDepth + 1
+						);
 						iEndCount += iLocalEndCount;
 					}
 				}
 
-				iEndCount = 0;
+				return iWinCount;
 			}
 
 			
@@ -89,6 +107,7 @@ namespace rlConnectFour
 			const Board &m_oCurrentBoard;
 			const Token m_eSelf;
 			const Token m_eOpponent;
+			const unsigned m_iMaxDepth;
 		};
 
 	}
@@ -99,7 +118,7 @@ namespace rlConnectFour
 	{
 		std::cout << "Player " << m_iPlayerNo << " is thinking...\n";
 
-		GameTree tree(m_oBoard, m_ePlayer);
+		GameTree tree(m_oBoard, m_ePlayer, 5);
 
 		const unsigned iColumn = tree.getBestColumn();
 
