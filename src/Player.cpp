@@ -3,7 +3,8 @@
 namespace rlConnectFour
 {
 
-	Player::Player(Board &board) : m_oBoard(board)
+	Player::Player(const Board &board, unsigned playerNo) :
+		m_oBoard(board), m_iPlayerNo(playerNo)
 	{
 
 	}
