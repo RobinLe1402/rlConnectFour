@@ -23,7 +23,7 @@ namespace rlConnectFour
 	public: // methods
 
 		Player(const Board &board, unsigned playerNo);
-		~Player() = default;
+		virtual ~Player() = default;
 
 
 	protected: // variables
