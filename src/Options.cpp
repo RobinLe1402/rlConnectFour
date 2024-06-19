@@ -48,7 +48,7 @@ namespace rlConnectFour
 					// starts with "-" => short flag
 					else
 					{
-						size_t idx = 2;
+						size_t idx = 1;
 						char c = szArg[idx];
 						while (c)
 						{
