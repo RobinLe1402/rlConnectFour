@@ -66,7 +66,7 @@ namespace rlConnectFour
 
 
 		// 1. check downwards
-		if (iDropRow >= 4)
+		if (iDropRow >= 3)
 		{
 			if (
 				m_eTokens[iLastDropped - 1] == eDropped &&
