@@ -1,5 +1,7 @@
 #include "Console.hpp"
 
+#include "Options.hpp"
+
 #include <cstdio>
 
 
@@ -56,16 +58,28 @@ namespace Console
 
 	void SetForegroundColor(Color cl)
 	{
+		const auto pOptions = rlConnectFour::Options::GetInstance();
+		if (pOptions && pOptions->getNoColor())
+			return;
+
 		std::printf("\033[%sm", szFG_COLORS[(size_t)cl]);
 	}
 
 	void SetBackgroundColor(Color cl)
 	{
+		const auto pOptions = rlConnectFour::Options::GetInstance();
+		if (pOptions && pOptions->getNoColor())
+			return;
+
 		std::printf("\033[%sm", szBG_COLORS[(size_t)cl]);
 	}
 
 	void SetColors(Color clForeground, Color clBackground)
 	{
+		const auto pOptions = rlConnectFour::Options::GetInstance();
+		if (pOptions && pOptions->getNoColor())
+			return;
+
 		std::printf("\033[%s;%sm",
 			szFG_COLORS[(size_t)clForeground],
 			szBG_COLORS[(size_t)clBackground]
@@ -74,6 +88,10 @@ namespace Console
 
 	void ResetColors()
 	{
+		const auto pOptions = rlConnectFour::Options::GetInstance();
+		if (pOptions && pOptions->getNoColor())
+			return;
+
 		SetColors(Color::White, Color::Black);
 	}
 

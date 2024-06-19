@@ -26,6 +26,13 @@ int main(int argc, char* argv[])
 	}
 #endif
 
+	rlConnectFour::Options opt(argc, argv);
+	if (opt.getShowHelp())
+	{
+		opt.printHelp();
+		return 0;
+	}
+
 	using col = Console::Color;
 
 	Console::SetColors(col::BrightWhite, col::BrightBlue);
@@ -36,13 +43,6 @@ int main(int argc, char* argv[])
 		"\n"
 	);
 	Console::ResetColors();
-
-	rlConnectFour::Options opt(argc, argv);
-	if (opt.getShowHelp())
-	{
-		opt.printHelp();
-		return 0;
-	}
 
 	rlConnectFour::GameMaster oGameMaster(opt);
 	oGameMaster.run();

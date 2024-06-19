@@ -27,14 +27,25 @@ namespace rlConnectFour
 		const std::string &getPlayer1Name() const { return m_sPlayerNames[0]; }
 		const std::string &getPlayer2Name() const { return m_sPlayerNames[1]; }
 
+		bool getNoColor() const { return m_bNoColor; }
+
+		
+		static Options *GetInstance() { return s_pInstance; }
+
 
 	private: // variables
 
+		bool     m_bNoColor          = false;
 		bool     m_bShowHelp         = false;
 		unsigned m_iHumanPlayerCount = 1;
 		bool     m_bPlayer1Starts    = true;
 		
 		std::string m_sPlayerNames[2] = {};
+
+
+	private: // static variables
+
+		static Options *s_pInstance;
 
 	};
 
