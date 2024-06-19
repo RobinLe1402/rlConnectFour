@@ -16,7 +16,12 @@ namespace rlConnectFour
 	{
 	public: // methods
 
-		Game(unsigned iHumanPlayerCount = 1, bool bPlayer1Starts = true);
+		Game(
+			unsigned iHumanPlayerCount,
+			bool bPlayer1Starts,
+			const std::string &sPlayer1,
+			const std::string &sPlayer2
+		);
 		~Game() = default;
 
 		bool hasEnded() const;

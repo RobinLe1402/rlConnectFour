@@ -9,8 +9,13 @@
 namespace rlConnectFour
 {
 
-	GameMaster::GameMaster(unsigned iHumanPlayerCount, bool bPlayer1Starts) :
-		m_oGame(iHumanPlayerCount, bPlayer1Starts)
+	GameMaster::GameMaster(const Options &options) :
+		m_oGame(
+			options.getHumanPlayerCount(),
+			options.getPlayer1Starts(),
+			options.getPlayer1Name(),
+			options.getPlayer2Name()
+		)
 	{ }
 
 	void GameMaster::run()

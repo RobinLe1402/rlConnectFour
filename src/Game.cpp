@@ -6,7 +6,26 @@
 namespace rlConnectFour
 {
 
-	Game::Game(unsigned iHumanPlayerCount, bool bPlayer1Starts) :
+	namespace
+	{
+		
+		std::string ValidString(const std::string &sCustomOption, const char *szDefault)
+		{
+			if (sCustomOption.empty())
+				return szDefault;
+			else
+				return sCustomOption;
+		}
+
+	}
+
+
+	Game::Game(
+		unsigned iHumanPlayerCount,
+		bool bPlayer1Starts,
+		const std::string &sPlayer1,
+		const std::string &sPlayer2
+	) :
 		m_cCurrentPlayer((bPlayer1Starts) ? 0 : 1)
 	{
 		assert(iHumanPlayerCount <= 2);
@@ -14,18 +33,22 @@ namespace rlConnectFour
 		switch (iHumanPlayerCount)
 		{
 		case 0:
-			m_oPlayers[0] = new AIPlayer(m_oBoard, Token::Player1, "CPU 1");
-			m_oPlayers[1] = new AIPlayer(m_oBoard, Token::Player2, "CPU 2");
+			m_oPlayers[0] = new AIPlayer(m_oBoard, Token::Player1, ValidString(sPlayer1, "CPU 1"));
+			m_oPlayers[1] = new AIPlayer(m_oBoard, Token::Player2, ValidString(sPlayer2, "CPU 2"));
 			break;
 
 		case 1:
-			m_oPlayers[0] = new HumanPlayer(m_oBoard, Token::Player1, "Player");
-			m_oPlayers[1] = new AIPlayer   (m_oBoard, Token::Player2, "CPU");
+			m_oPlayers[0] =
+				new HumanPlayer(m_oBoard, Token::Player1, ValidString(sPlayer1, "Player"));
+			m_oPlayers[1] =
+				new AIPlayer   (m_oBoard, Token::Player2, ValidString(sPlayer2, "CPU"));
 			break;
 
 		case 2:
-			m_oPlayers[0] = new HumanPlayer(m_oBoard, Token::Player1, "Player 1");
-			m_oPlayers[1] = new HumanPlayer(m_oBoard, Token::Player2, "Player 2");
+			m_oPlayers[0] =
+				new HumanPlayer(m_oBoard, Token::Player1, ValidString(sPlayer1, "Player 1"));
+			m_oPlayers[1] =
+				new HumanPlayer(m_oBoard, Token::Player2, ValidString(sPlayer2, "Player 2"));
 			break;
 		}
 	}

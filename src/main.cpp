@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
-	rlConnectFour::GameMaster oGameMaster(opt.getHumanPlayerCount(), opt.getPlayer1Starts());
+	rlConnectFour::GameMaster oGameMaster(opt);
 	oGameMaster.run();
 
 	// reset the console colors

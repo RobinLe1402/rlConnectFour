@@ -25,7 +25,7 @@ namespace rlConnectFour
 
 	public: // methods
 
-		Player(const Board &board, Token player, const char *szName);
+		Player(const Board &board, Token player, const std::string &sName);
 		virtual ~Player() = default;
 
 		const std::string &getName() const;

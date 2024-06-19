@@ -6,6 +6,7 @@
 
 
 #include "Game.hpp"
+#include "Options.hpp"
 
 
 
@@ -16,7 +17,7 @@ namespace rlConnectFour
 	{
 	public: // methods
 
-		GameMaster(unsigned iHumanPlayerCount, bool bPlayer1Starts);
+		GameMaster(const Options &options);
 		~GameMaster() = default;
 
 		void run();

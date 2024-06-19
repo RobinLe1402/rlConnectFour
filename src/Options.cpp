@@ -20,7 +20,7 @@ namespace rlConnectFour
 					// starts with "--" => long flag
 					if (szArg[1] == '-')
 					{
-						// --ai-count
+						// --ai-count <count>
 						if (strcmp(szArg + 2, "ai-count") == 0)
 						{
 							if (iArg + 1 == argc)
@@ -31,6 +31,28 @@ namespace rlConnectFour
 								throw std::invalid_argument("Invalid value after --ai-count");
 
 							m_iHumanPlayerCount = 2 - (szAICount[0] - '0');
+
+							++iArg; // skip value in validation
+						}
+
+						// --player1 <name>
+						else if (strcmp(szArg + 2, "player1") == 0)
+						{
+							if (iArg + 1 == argc)
+								throw std::invalid_argument("Expected value after --player1");
+
+							m_sPlayerNames[0] = argv[iArg + 1];
+
+							++iArg; // skip value in validation
+						}
+
+						// --player2 <name>
+						else if (strcmp(szArg + 2, "player2") == 0)
+						{
+							if (iArg + 1 == argc)
+								throw std::invalid_argument("Expected value after --player2");
+
+							m_sPlayerNames[1] = argv[iArg + 1];
 
 							++iArg; // skip value in validation
 						}
@@ -89,12 +111,14 @@ namespace rlConnectFour
 	{
 		std::cout <<
 			"OPTIONS:\n"
-			"  -h, --help       Output this help text.\n"
-			"  --ai-count x     Use x AIs. Default is 1.\n"
-			"                   (x must be an integer between 0 and 2)\n"
-			"                   If this value is set to 1, player 1 is the human player.\n"
-			"  --player2-first  Set player 2 to start.\n"
-			"                   By default, player 1 starts.\n";
+			"  -h, --help        Output this help text.\n"
+			"  --ai-count <x>    Use <x> AIs. Default is 1.\n"
+			"                    (<x> must be an integer between 0 and 2)\n"
+			"                    If this value is set to 1, player 1 is the human player.\n"
+			"  --player1 <name>  Set the name of player 1 to <name>.\n"
+			"  --player2 <name>  Set the name of player 2 to <name>.\n"
+			"  --player2-first   Set player 2 to start.\n"
+			"                    By default, player 1 starts.\n";
 	}
 
 }
