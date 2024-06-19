@@ -155,6 +155,9 @@
     <ClInclude Include="src\Player_AI.hpp" />
     <ClInclude Include="src\Player_Human.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\version.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
