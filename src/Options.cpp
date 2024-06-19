@@ -39,6 +39,10 @@ namespace rlConnectFour
 						else if (strcmp(szArg + 2, "player2-first") == 0)
 							m_bPlayer1Starts = false;
 
+						// --help
+						else if (strcmp(szArg + 2, "help") == 0)
+							m_bShowHelp = true;
+
 						else
 							throw std::invalid_argument(
 								(std::string("unknown flag \"") + szArg + "\"").c_str()
@@ -85,7 +89,7 @@ namespace rlConnectFour
 	{
 		std::cout <<
 			"OPTIONS:\n"
-			"  -h               Output this help text.\n"
+			"  -h, --help       Output this help text.\n"
 			"  --ai-count x     Use x AIs. Default is 1.\n"
 			"                   (x must be an integer between 0 and 2)\n"
 			"                   If this value is set to 1, player 1 is the human player.\n"
