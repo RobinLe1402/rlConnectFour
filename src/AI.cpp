@@ -193,6 +193,10 @@ namespace rlConnectFour
 
 			Board oBoardCopy = m_oBoard;
 			oBoardCopy.dropToken(m_eSelf, iColumn);
+
+			if (oBoardCopy.getWinner() == m_eSelf)
+				return iColumn; // current AI wins with this move
+
 			const float fRating = RateBoard(oBoardCopy, m_eSelf);
 			if (fRating > fBest || fBest == fNegInfty)
 			{
