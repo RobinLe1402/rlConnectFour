@@ -9,6 +9,7 @@
 
 #include "Console.hpp"
 #include "GameMaster.hpp"
+#include "Options.hpp"
 
 #include "AI.hpp"
 
@@ -36,13 +37,14 @@ int main(int argc, char* argv[])
 	);
 	Console::ResetColors();
 
-	rlConnectFour::Board board;
-	board.dropToken(rlConnectFour::Token::Player1, 1);
-	board.dropToken(rlConnectFour::Token::Player1, 2);
-	board.dropToken(rlConnectFour::Token::Player1, 3);
-	board.dropToken(rlConnectFour::Token::Player2, 4);
+	rlConnectFour::Options opt(argc, argv);
+	if (opt.getShowHelp())
+	{
+		opt.printHelp();
+		return 0;
+	}
 
-	rlConnectFour::GameMaster oGameMaster(1, true);
+	rlConnectFour::GameMaster oGameMaster(opt.getHumanPlayerCount(), opt.getPlayer1Starts());
 	oGameMaster.run();
 
 	// reset the console colors
