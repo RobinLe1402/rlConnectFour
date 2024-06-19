@@ -88,7 +88,7 @@ namespace Console
 		if (rlConnectFour::Options::NoColor())
 			return;
 
-		SetColors(Color::White, Color::Black);
+		std::printf("\033[0m");
 	}
 
 }
