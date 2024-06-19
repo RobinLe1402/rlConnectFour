@@ -107,7 +107,7 @@ namespace rlConnectFour
 			return oResult;
 		}
 
-		float RateDataStripe(const DataStripe &stripe, Token eOpponent,
+		float RateDataStripe(const DataStripe &stripe, Token eOpponent, bool &bCanWin,
 			std::vector<uint8_t> &oValidStartOffsets
 		)
 		{
@@ -143,15 +143,19 @@ namespace rlConnectFour
 
 				const float fWinProbability = 1.0f / iMissingTokenCount;
 				fResult += fWinProbability;
+				if (iMissingTokenCount == 1)
+					bCanWin = true;
 			}
 
 			return fResult;
 		}
 
-		float RateDataStripes(const DataStripes &stripes, Token ePlayer)
+		float RateDataStripes(const DataStripes &stripes, Token ePlayer, bool &bCanWin)
 		{
 			assert(ePlayer != Token::None);
+
 			const auto eOpponent = (ePlayer == Token::Player1) ? Token::Player2 : Token::Player1;
+			bCanWin = false;
 
 			std::vector<uint8_t> oTMP;
 			oTMP.reserve(4);
@@ -159,7 +163,7 @@ namespace rlConnectFour
 			float fResult = 0;
 			for (const auto &oStripe : stripes)
 			{
-				fResult += RateDataStripe(oStripe, eOpponent, oTMP);
+				fResult += RateDataStripe(oStripe, eOpponent, bCanWin, oTMP);
 			}
 			return fResult;
 		}
@@ -208,9 +212,14 @@ namespace rlConnectFour
 		const auto eOpponent = (eSelf == Token::Player1) ? Token::Player2 : Token::Player1;
 		const auto oStripes  = GetDataStripes(board);
 
-		return
-			RateDataStripes(oStripes, eSelf) -
-			RateDataStripes(oStripes, eOpponent);
+		bool bCanWin;
+		const auto fOwn      = RateDataStripes(oStripes, eSelf,     bCanWin);
+		const auto fOpponent = RateDataStripes(oStripes, eOpponent, bCanWin);
+
+		if (bCanWin) // opponent can win with the next move
+			return -std::numeric_limits<float>::infinity();
+		else
+			return fOwn - fOpponent;
 	}
 
 }
