@@ -1,3 +1,4 @@
+#include <array>
 #include <iostream>
 
 #ifdef rlWINDOWS
@@ -40,15 +41,20 @@ int main(int argc, char* argv[])
 		constexpr auto clFG = Console::Color::BrightWhite;
 		constexpr auto clBG = Console::Color::BrightBlue;
 
-		Console::SetColors(clFG, clBG);
-		std::cout << "==================================================";
-		Console::ResetColors(); std::cout << '\n';
-		Console::SetColors(clFG, clBG);
-		std::cout << "= ROBIN LE'S  CONNECT FOUR  FOR THE COMMAND LINE =";
-		Console::ResetColors(); std::cout << '\n';
-		Console::SetColors(clFG, clBG);
-		std::cout << "==================================================";
-		Console::ResetColors(); std::cout << "\n\n";
+		constexpr std::array<char[51], 3> szBANNER =
+		{
+			"==================================================",
+			"= ROBIN LE'S  CONNECT FOUR  FOR THE COMMAND LINE =",
+			"=================================================="
+		};
+
+		for (const auto sz : szBANNER)
+		{
+			Console::SetColors(clFG, clBG);
+			std::cout << sz;
+			Console::ResetColors(); std::cout << '\n';
+		}
+		std::cout << '\n';
 	}
 
 	rlConnectFour::GameMaster oGameMaster(opt);
