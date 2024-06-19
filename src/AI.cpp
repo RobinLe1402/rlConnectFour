@@ -181,7 +181,9 @@ namespace rlConnectFour
 
 	unsigned AI::run()
 	{
-		float    fBest = -std::numeric_limits<float>::infinity(); // initialize to -infty
+		constexpr float fNegInfty = -std::numeric_limits<float>::infinity();
+
+		float    fBest = fNegInfty;
 		unsigned iBest = BoardWidth;
 
 		for (unsigned iColumn = 0; iColumn < BoardWidth; ++iColumn)
@@ -192,7 +194,7 @@ namespace rlConnectFour
 			Board oBoardCopy = m_oBoard;
 			oBoardCopy.dropToken(m_eSelf, iColumn);
 			const float fRating = RateBoard(oBoardCopy, m_eSelf);
-			if (fRating > fBest)
+			if (fRating > fBest || fBest == fNegInfty)
 			{
 				fBest = fRating;
 				iBest = iColumn;
