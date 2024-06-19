@@ -14,18 +14,18 @@ namespace rlConnectFour
 		switch (iHumanPlayerCount)
 		{
 		case 0:
-			m_oPlayers[0] = new AIPlayer(m_oBoard, Token::Player1);
-			m_oPlayers[1] = new AIPlayer(m_oBoard, Token::Player2);
+			m_oPlayers[0] = new AIPlayer(m_oBoard, Token::Player1, "CPU 1");
+			m_oPlayers[1] = new AIPlayer(m_oBoard, Token::Player2, "CPU 2");
 			break;
 
 		case 1:
-			m_oPlayers[0] = new HumanPlayer(m_oBoard, Token::Player1);
-			m_oPlayers[1] = new AIPlayer   (m_oBoard, Token::Player2);
+			m_oPlayers[0] = new HumanPlayer(m_oBoard, Token::Player1, "Player");
+			m_oPlayers[1] = new AIPlayer   (m_oBoard, Token::Player2, "CPU");
 			break;
 
 		case 2:
-			m_oPlayers[0] = new HumanPlayer(m_oBoard, Token::Player1);
-			m_oPlayers[1] = new HumanPlayer(m_oBoard, Token::Player2);
+			m_oPlayers[0] = new HumanPlayer(m_oBoard, Token::Player1, "Player 1");
+			m_oPlayers[1] = new HumanPlayer(m_oBoard, Token::Player2, "Player 2");
 			break;
 		}
 	}

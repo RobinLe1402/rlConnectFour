@@ -25,10 +25,10 @@ namespace rlConnectFour
 
 	public: // methods
 
-		Player(const Board &board, Token player);
+		Player(const Board &board, Token player, const char *szName);
 		virtual ~Player() = default;
 
-		std::string getName() const;
+		const std::string &getName() const;
 		Console::Color getColor() const { return m_eColor; }
 
 
@@ -38,6 +38,11 @@ namespace rlConnectFour
 		const Token m_ePlayer;
 		const unsigned m_iPlayerNo;
 		const Console::Color m_eColor;
+
+
+	private: // variables
+		
+		const std::string m_sName;
 
 	};
 
