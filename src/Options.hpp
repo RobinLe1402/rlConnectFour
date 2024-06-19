@@ -19,13 +19,14 @@ namespace rlConnectFour
 		Options(int argc, char **argv);
 
 		bool getShowHelp() const { return m_bShowHelp; }
-		unsigned getHumanPlayerCount() const { return m_iHumanPlayerCount; }
+		bool getNoBanner() const { return m_bNoBanner; }
 		bool getPlayer1Starts() const { return m_bPlayer1Starts; }
-
-		void printHelp() const;
+		unsigned getHumanPlayerCount() const { return m_iHumanPlayerCount; }
 
 		const std::string &getPlayer1Name() const { return m_sPlayerNames[0]; }
 		const std::string &getPlayer2Name() const { return m_sPlayerNames[1]; }
+
+		void printHelp() const;
 
 		
 		static Options *GetInstance() { return s_pInstance; }
@@ -34,10 +35,11 @@ namespace rlConnectFour
 
 	private: // variables
 
-		bool     m_bNoColor          = false;
 		bool     m_bShowHelp         = false;
-		unsigned m_iHumanPlayerCount = 1;
+		bool     m_bNoColor          = false;
+		bool     m_bNoBanner         = false;
 		bool     m_bPlayer1Starts    = true;
+		unsigned m_iHumanPlayerCount = 1;
 		
 		std::string m_sPlayerNames[2] = {};
 

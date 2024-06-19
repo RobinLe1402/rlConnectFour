@@ -44,6 +44,10 @@ namespace rlConnectFour
 							++iArg; // skip value in validation
 						}
 
+						// --no-banner
+						else if (strcmp(szArg + 2, "no-banner") == 0)
+							m_bNoBanner = true;
+
 						// --no-color
 						else if (strcmp(szArg + 2, "no-color") == 0)
 							m_bNoColor = true;
@@ -128,6 +132,7 @@ namespace rlConnectFour
 			"  --ai-count <x>    Use <x> AIs. Default is 1.\n"
 			"                    (<x> must be an integer between 0 and 2)\n"
 			"                    If this value is set to 1, player 1 is the human player.\n"
+			"  --no-banner       Hide the banner.\n"
 			"  --no-color        Disable ANSI escape sequences for colors.\n"
 			"  --player1 <name>  Set the name of player 1 to <name>.\n"
 			"  --player2 <name>  Set the name of player 2 to <name>.\n"

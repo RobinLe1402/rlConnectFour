@@ -1,4 +1,4 @@
-#include <cstdio>
+#include <iostream>
 
 #ifdef rlWINDOWS
 #define WIN32_LEAN_AND_MEAN
@@ -35,16 +35,21 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
-	using col = Console::Color;
+	if (!opt.getNoBanner())
+	{
+		constexpr auto clFG = Console::Color::BrightWhite;
+		constexpr auto clBG = Console::Color::BrightBlue;
 
-	Console::SetColors(col::BrightWhite, col::BrightBlue);
-	std::printf(
-		"==================================================\n"
-		"= ROBIN LE'S  CONNECT FOUR  FOR THE COMMAND LINE =\n"
-		"==================================================\n"
-		"\n"
-	);
-	Console::ResetColors();
+		Console::SetColors(clFG, clBG);
+		std::cout << "==================================================";
+		Console::ResetColors(); std::cout << '\n';
+		Console::SetColors(clFG, clBG);
+		std::cout << "= ROBIN LE'S  CONNECT FOUR  FOR THE COMMAND LINE =";
+		Console::ResetColors(); std::cout << '\n';
+		Console::SetColors(clFG, clBG);
+		std::cout << "==================================================";
+		Console::ResetColors(); std::cout << "\n\n";
+	}
 
 	rlConnectFour::GameMaster oGameMaster(opt);
 	oGameMaster.run();

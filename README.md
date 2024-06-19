@@ -9,6 +9,7 @@ OPTIONS:
   --ai-count <x>    Use <x> AIs. Default is 1.
                     (<x> must be an integer between 0 and 2)
                     If this value is set to 1, player 1 is the human player.
+  --no-banner       Hide the banner.
   --no-color        Disable ANSI escape sequences for colors.
   --player1 <name>  Set the name of player 1 to <name>.
   --player2 <name>  Set the name of player 2 to <name>.
