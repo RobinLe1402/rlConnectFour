@@ -30,7 +30,7 @@ namespace rlConnectFour
 	{
 		assert(iColumn < BoardWidth);
 
-		return m_iTokenCount[iColumn];
+		return (unsigned)m_iTokenCount[iColumn];
 	}
 
 	unsigned Board::getIndex(unsigned iColumn, unsigned iRowFromBottom) const
