@@ -5,6 +5,8 @@
 
 
 
+#include "PlatformDependent.hpp"
+
 #include <cassert>
 
 

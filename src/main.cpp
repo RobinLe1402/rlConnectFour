@@ -7,6 +7,8 @@
 #include <Windows.h>
 #endif
 
+#include "PlatformDependent.hpp"
+
 #include "Console.hpp"
 #include "GameMaster.hpp"
 #include "Options.hpp"

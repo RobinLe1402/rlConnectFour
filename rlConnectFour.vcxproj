@@ -151,6 +151,7 @@
     <ClInclude Include="src\GameMaster.hpp" />
     <ClInclude Include="src\Graphics.hpp" />
     <ClInclude Include="src\Options.hpp" />
+    <ClInclude Include="src\PlatformDependent.hpp" />
     <ClInclude Include="src\Player.hpp" />
     <ClInclude Include="src\Player_AI.hpp" />
     <ClInclude Include="src\Player_Human.hpp" />

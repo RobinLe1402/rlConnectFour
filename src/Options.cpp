@@ -1,6 +1,7 @@
 #include "Options.hpp"
 
 #include <cassert>
+#include <cstring>
 #include <iostream>
 
 
