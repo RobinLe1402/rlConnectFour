@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 		{
 			"##########################################",
 			"## 'CONNECT FOUR'  FOR THE COMMAND LINE ##",
-			"##               v1.0.1.0               ##",
+			"##               v1.0.1.1               ##",
 			"##             ------------             ##",
 			"##           (c) 2024 RobinLe           ##",
 			"##       https://www.robinle.net/       ##",
