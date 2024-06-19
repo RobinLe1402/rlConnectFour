@@ -41,11 +41,14 @@ int main(int argc, char* argv[])
 		constexpr auto clFG = Console::Color::BrightWhite;
 		constexpr auto clBG = Console::Color::BrightBlue;
 
-		constexpr std::array<char[51], 3> szBANNER =
+		constexpr std::array<char[43], 6> szBANNER =
 		{
-			"==================================================",
-			"= ROBIN LE'S  CONNECT FOUR  FOR THE COMMAND LINE =",
-			"=================================================="
+			"##########################################",
+			"## 'CONNECT FOUR'  FOR THE COMMAND LINE ##",
+			"##      --------------------------      ##",
+			"##           (c) 2024 RobinLe           ##",
+			"##       https://www.robinle.net/       ##",
+			"##########################################"
 		};
 
 		for (const auto sz : szBANNER)
@@ -54,7 +57,7 @@ int main(int argc, char* argv[])
 			std::cout << sz;
 			Console::ResetColors(); std::cout << '\n';
 		}
-		std::cout << '\n';
+		std::cout << "\n\n";
 	}
 
 	rlConnectFour::GameMaster oGameMaster(opt);
