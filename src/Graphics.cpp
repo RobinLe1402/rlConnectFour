@@ -3,6 +3,7 @@
 
 namespace rlConnectFour
 {
+
 	std::ostream &operator<<(std::ostream &stream, const Board &board)
 	{
 		stream << " |1 |2 |3 |4 |5 |6 |7 |\n"
@@ -20,12 +21,12 @@ namespace rlConnectFour
 					break;
 
 				case Token::Player1:
-					Console::SetForegroundColor(Console::Color::BrightRed);
+					Console::SetForegroundColor(clPLAYER1);
 					stream << "()";
 					break;
 
 				case Token::Player2:
-					Console::SetForegroundColor(Console::Color::BrightYellow);
+					Console::SetForegroundColor(clPLAYER2);
 					stream << "()";
 					break;
 				}
@@ -36,6 +37,15 @@ namespace rlConnectFour
 		}
 
 		stream << " +--+--+--+--+--+--+--+\n";
+		return stream;
+	}
+
+	std::ostream &operator<<(std::ostream &stream, const Player &player)
+	{
+		Console::SetForegroundColor(player.getColor());
+		stream << player.getName();
+		Console::ResetColors();
+
 		return stream;
 	}
 

@@ -23,6 +23,7 @@ namespace rlConnectFour
 		void nextMove();
 
 		const Board &getBoard() const { return m_oBoard; }
+		const Player &getPlayer(unsigned iPlayer) const;
 
 
 	private: // variables

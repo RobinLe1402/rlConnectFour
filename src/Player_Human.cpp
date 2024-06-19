@@ -1,4 +1,5 @@
 #include "Player_Human.hpp"
+#include "Graphics.hpp"
 
 #include <iostream>
 #include <string>
@@ -8,8 +9,9 @@ namespace rlConnectFour
 
 	unsigned HumanPlayer::nextMove()
 	{
+		std::cout << *this << ", pick a column:\n";
+
 		std::string sInput;
-		std::cout << "Player " << m_iPlayerNo << ", pick a column:\n";
 		while (true)
 		{
 			std::getline(std::cin, sInput);

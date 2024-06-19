@@ -44,4 +44,11 @@ namespace rlConnectFour
 		m_cCurrentPlayer ^= 1;
 	}
 
+	const Player &Game::getPlayer(unsigned iPlayer) const
+	{
+		assert(iPlayer <= 2);
+
+		return *m_oPlayers[iPlayer];
+	}
+
 }

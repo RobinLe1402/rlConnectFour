@@ -34,11 +34,12 @@ namespace rlConnectFour
 			break;
 
 		case Token::Player1:
-			std::cout << "Player 1 won!\n";
+
+			std::cout << m_oGame.getPlayer(0) << " won!\n";
 			break;
 
 		case Token::Player2:
-			std::cout << "Player 2 won!\n";
+			std::cout << m_oGame.getPlayer(1) << " won!\n";
 			break;
 		}
 	}
