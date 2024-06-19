@@ -98,7 +98,7 @@ namespace rlConnectFour
 
 					FieldInfo fi{};
 					fi.eType       = board.getToken(idx);
-					fi.iHeightDiff = int8_t(iRow) + 1 - (int8_t)board.getTokenCount(iCol);
+					fi.iHeightDiff = int8_t(iRow) + 1 - (int8_t)board.getTokenCount((unsigned)iCol);
 
 					dest.push_back(fi);
 				}
@@ -123,7 +123,7 @@ namespace rlConnectFour
 					stripe[iStartOffset + 2].eType != eOpponent &&
 					stripe[iStartOffset + 3].eType != eOpponent
 				)
-					oValidStartOffsets.push_back(iStartOffset);
+					oValidStartOffsets.push_back((uint8_t)iStartOffset);
 			}
 
 			// rate potential start indexes
