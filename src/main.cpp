@@ -41,11 +41,12 @@ int main(int argc, char* argv[])
 		constexpr auto clFG = Console::Color::BrightWhite;
 		constexpr auto clBG = Console::Color::BrightBlue;
 
-		constexpr std::array<char[43], 6> szBANNER =
+		constexpr std::array<char[43], 7> szBANNER =
 		{
 			"##########################################",
 			"## 'CONNECT FOUR'  FOR THE COMMAND LINE ##",
-			"##      --------------------------      ##",
+			"##               v1.0.1.0               ##",
+			"##             ------------             ##",
 			"##           (c) 2024 RobinLe           ##",
 			"##       https://www.robinle.net/       ##",
 			"##########################################"
