@@ -141,13 +141,8 @@ namespace rlConnectFour
 					((field3.iHeightDiff > 0) ? field3.iHeightDiff : 0) +
 					((field4.iHeightDiff > 0) ? field4.iHeightDiff : 0);
 
-				if (iMissingTokenCount == 1)
-					fResult += 100;
-				else
-				{
-					const float fWinProbability = 1.0f / iMissingTokenCount;
-					fResult += fWinProbability;
-				}
+				const float fWinProbability = 1.0f / iMissingTokenCount;
+				fResult += fWinProbability;
 			}
 
 			return fResult;
