@@ -26,6 +26,13 @@ namespace rlConnectFour
 		return m_iTokenCount[iColumn] < BoardHeight;
 	}
 
+	unsigned Board::getTokenCount(unsigned iColumn) const
+	{
+		assert(iColumn < BoardWidth);
+
+		return m_iTokenCount[iColumn];
+	}
+
 	unsigned Board::getIndex(unsigned iColumn, unsigned iRowFromBottom) const
 	{
 		assert(iColumn        < BoardWidth);

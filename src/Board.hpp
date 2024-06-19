@@ -32,6 +32,7 @@ namespace rlConnectFour
 
 		bool isFinalState() const;
 		bool hasRoom(unsigned iColumn) const;
+		unsigned getTokenCount(unsigned iColumn) const;
 
 		Token getToken(unsigned idx) const
 		{

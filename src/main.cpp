@@ -10,6 +10,8 @@
 #include "Console.hpp"
 #include "GameMaster.hpp"
 
+#include "AI.hpp"
+
 int main(int argc, char* argv[])
 {
 #ifdef rlWINDOWS
@@ -33,6 +35,12 @@ int main(int argc, char* argv[])
 		"\n"
 	);
 	Console::ResetColors();
+
+	rlConnectFour::Board board;
+	board.dropToken(rlConnectFour::Token::Player1, 1);
+	board.dropToken(rlConnectFour::Token::Player1, 2);
+	board.dropToken(rlConnectFour::Token::Player1, 3);
+	board.dropToken(rlConnectFour::Token::Player2, 4);
 
 	rlConnectFour::GameMaster oGameMaster(1, true);
 	oGameMaster.run();
