@@ -1,5 +1,6 @@
 #include "Graphics.hpp"
 #include "Console.hpp"
+#include "Options.hpp"
 
 namespace rlConnectFour
 {
@@ -8,6 +9,8 @@ namespace rlConnectFour
 	{
 		stream << " |1 |2 |3 |4 |5 |6 |7 |\n"
 		       << " +--+--+--+--+--+--+--+\n";
+
+		const bool bNoColor = Options::NoColor();
 
 		for (int iY = BoardHeight - 1; iY >= 0; --iY)
 		{
@@ -21,13 +24,23 @@ namespace rlConnectFour
 					break;
 
 				case Token::Player1:
-					Console::SetForegroundColor(clPLAYER1);
-					stream << "()";
+					if (!bNoColor)
+					{
+						Console::SetForegroundColor(clPLAYER1);
+						stream << "()";
+					}
+					else
+						stream << "()";
 					break;
 
 				case Token::Player2:
-					Console::SetForegroundColor(clPLAYER2);
-					stream << "()";
+					if (!bNoColor)
+					{
+						Console::SetForegroundColor(clPLAYER2);
+						stream << "()";
+					}
+					else
+						stream << "[]";
 					break;
 				}
 				Console::ResetColors();
@@ -42,9 +55,19 @@ namespace rlConnectFour
 
 	std::ostream &operator<<(std::ostream &stream, const Player &player)
 	{
-		Console::SetForegroundColor(player.getColor());
-		stream << player.getName();
-		Console::ResetColors();
+		if (!Options::NoColor())
+		{
+			Console::SetForegroundColor(player.getColor());
+			stream << player.getName();
+			Console::ResetColors();
+		}
+		else
+		{
+			if (player.getNumber() == 1)
+				stream << '(' << player.getName() << ')';
+			else
+				stream << '[' << player.getName() << ']';
+		}
 
 		return stream;
 	}

@@ -30,6 +30,7 @@ namespace rlConnectFour
 
 		const std::string &getName() const;
 		Console::Color getColor() const { return m_eColor; }
+		unsigned getNumber() const { return m_iPlayerNo; }
 
 
 	protected: // variables
